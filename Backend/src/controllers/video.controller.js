@@ -50,7 +50,7 @@ const publishAVideo=asyncHandler(async(req,res)=>{
             owner:req.user._id,
 
         });
-        console.log("Hello5");
+       
 
     res
     .status(201)

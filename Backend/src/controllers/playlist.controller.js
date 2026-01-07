@@ -9,7 +9,7 @@ import { User } from "../models/user.models.js";
 const createPlaylist = asyncHandler(async (req, res) => {
     const {name, description} = req.body
 
-    if(!name || !description) throw ApiError(400,"Playlist name is required");
+    if(!name || !description) throw new ApiError(400,"Playlist name is required");
        
    
     
@@ -93,9 +93,6 @@ const addVideoToPlaylist = asyncHandler(async (req, res) => {
     if (!playlist) {
         throw new ApiError(404, "Playlist not found");
     }
-
-    console.log(playlist.owner);
-    
     
      if (playlist.owner.toString() !== req.user._id.toString()) {
         throw new ApiError(403, "You do not have permission to modify this playlist");
@@ -156,10 +153,6 @@ const removeVideoFromPlaylist = asyncHandler(async (req, res) => {
         .json(new ApiResponse(200,updatedPlaylist,"Video removed Successfully"));
 
 });
-
-
-
-
 
 const deletePlaylist = asyncHandler(async (req, res) => {
     const { playlistId } = req.params;
