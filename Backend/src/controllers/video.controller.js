@@ -64,10 +64,6 @@ const getAllVideos=asyncHandler(async(req,res)=>{
         page=parseInt(page);
         limit=parseInt(limit);
 
-       
-        
-        
-
         const filters={
             isPublished:true,
         }
@@ -77,8 +73,6 @@ const getAllVideos=asyncHandler(async(req,res)=>{
             filters.title={$regex:query, $options:"i"};
         }
 
-        
-        
         if(userId)
         {
             // Convert userId string to ObjectId
@@ -153,7 +147,6 @@ const getVideoById=asyncHandler(async(req,res)=>{
             new ApiResponse(200,video,"Video fetched successfully")
         );
 });
-
 
 const updateVideo = asyncHandler(async (req, res) => {
     const { videoId } = req.params;

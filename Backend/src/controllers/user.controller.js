@@ -43,7 +43,7 @@ const registerUser = asyncHandler(async (req, res) => {
     //await as it will take time
     $or: [{ username }, { email }] // username and email can pe passed in combination if found by anyone of both then return
   });
-
+  
   if (existedUser) {
     throw new ApiError(409, "User with email or username already exists");
   }
@@ -183,8 +183,6 @@ const logoutUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, {}, "User logged Out"));
 });
 
-
-
 const refreshAccessToken = asyncHandler(async (req, res) => {
   const incomingRefreshToken =
     req.cookies?.refreshToken || req.body?.refreshToken;
@@ -239,8 +237,6 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     throw new ApiError(401, err?.message || "Invalid refresh Token");
   }
 });
-
-
 
 const changeCurrentPassword = asyncHandler(async (req, res) => {
   const { oldPassword, newPassword } = req.body;
