@@ -29,8 +29,10 @@ export default defineConfig({
           ui: ['react-icons', 'react-hot-toast']
         }
       }
-    }
+    },
+    copyPublicDir: true
   },
+  publicDir: 'public',
   preview: {
     port: 4173
   }
